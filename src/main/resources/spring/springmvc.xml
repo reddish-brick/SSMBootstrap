@@ -25,7 +25,7 @@
 
     <!--使用annotation-driven 注解驱动，就可以代替 注解映射器 和 注解适配器 的配置-->
     <!--conversion-service 向处理器适配器中注入【自定义的参数绑定组件】。-->
-    <!--validator 向处理器适配器，注入 校验器-->
+    <!--validator 向处理器适配器，注入校验器-->
     <mvc:annotation-driven conversion-service="conversionService">
     </mvc:annotation-driven>
 
@@ -47,24 +47,32 @@
     <context:component-scan base-package="com.tmh.controller"/>
 
     <!--避免IE执行AJAX时，返回JSON出现下载文件 -->
-    <!--<bean id="mappingJacksonHttpMessageConverter"
+    <bean id="mappingJacksonHttpMessageConverter"
           class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
         <property name="supportedMediaTypes">
             <list>
                 <value>text/html;charset=UTF-8</value>
             </list>
         </property>
-    </bean>-->
+    </bean>
+    <!-- 启动SpringMVC的注解功能，完成请求和注解POJO的映射 -->
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="mappingJacksonHttpMessageConverter"/> <!--&lt;!&ndash; JSON转换器 &ndash;&gt;-->
+            </list>
+        </property>
+    </bean>
 
     <!-- 文件上传配置 -->
-    <!-- <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-         &lt;!&ndash; 默认编码 &ndash;&gt;
-         <property name="defaultEncoding" value="UTF-8"/>
-         &lt;!&ndash; 上传文件大小限制为31M，31*1024*1024 &ndash;&gt;
-         <property name="maxUploadSize" value="32505856"/>
-         &lt;!&ndash; 内存中的最大值 &ndash;&gt;
-         <property name="maxInMemorySize" value="4096"/>
-     </bean>-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 默认编码-->
+        <property name="defaultEncoding" value="UTF-8"/>
+        <!--上传文件大小限制为31M，31*1024*1024 -->
+        <property name="maxUploadSize" value="32505856"/>
+        <!--内存中的最大值-->
+        <property name="maxInMemorySize" value="4096"/>
+    </bean>
 
     <!--全局错误信息处理器
     只要实现HandlerExceptionResolver接口就是全局异常处理器

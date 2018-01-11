@@ -42,7 +42,4 @@
         <property name="basePackage" value="com.tmh.dao" />
         <property name="sqlSessionFactoryBeanName" value="sessionFactory" />
     </bean>
-
-
-
 </beans>
