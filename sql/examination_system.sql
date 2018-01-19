@@ -56,12 +56,12 @@ CREATE TABLE `course` (
 -- ----------------------------
 -- Records of course
 -- ----------------------------
-INSERT INTO `course` VALUES ('1', 'C语言程序设计', '1001', '周二', '科401', '18', '必修课', '1', '3');
-INSERT INTO `course` VALUES ('2', 'Python爬虫技巧', '1001', '周四', 'X402', '18', '必修课', '1', '3');
-INSERT INTO `course` VALUES ('3', '数据结构', '1001', '周四', '科401', '18', '必修课', '1', '2');
-INSERT INTO `course` VALUES ('4', 'Java程序设计', '1002', '周五', '科401', '18', '必修课', '1', '2');
-INSERT INTO `course` VALUES ('5', '英语', '1002', '周四', 'X302', '18', '必修课', '2', '2');
-INSERT INTO `course` VALUES ('6', '服装设计', '1003', '周一', '科401', '18', '选修课', '2', '2');
+INSERT INTO course VALUES ('1', 'C语言程序设计', '1001', '周二', '科401', '18', '必修课', '1', '3');
+INSERT INTO course VALUES ('2', 'Python爬虫技巧', '1001', '周四', 'X402', '18', '必修课', '1', '3');
+INSERT INTO course VALUES ('3', '数据结构', '1001', '周四', '科401', '18', '必修课', '1', '2');
+INSERT INTO course VALUES ('4', 'Java程序设计', '1002', '周五', '科401', '18', '必修课', '1', '2');
+INSERT INTO course VALUES ('5', '英语', '1002', '周四', 'X302', '18', '必修课', '2', '2');
+INSERT INTO course VALUES ('6', '服装设计', '1003', '周一', '科401', '18', '选修课', '2', '2');
 
 -- ----------------------------
 -- Table structure for role
@@ -91,7 +91,7 @@ CREATE TABLE `selectedcourse` (
   `mark` int(11) DEFAULT NULL COMMENT '成绩',
   KEY `courseID` (`courseID`),
   KEY `studentID` (`studentID`),
-  CONSTRAINT `selectedcourse_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `course` (`courseID`),
+  CONSTRAINT `selectedcourse_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES course (`courseID`),
   CONSTRAINT `selectedcourse_ibfk_2` FOREIGN KEY (`studentID`) REFERENCES `student` (`userID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

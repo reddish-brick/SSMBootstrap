@@ -105,7 +105,7 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.tmh.model.Course" >
-    insert into course (courseID, courseName, teacherID, 
+    insert into course (courseID, courseName, teacherID,
       courseTime, classRoom, courseWeek, 
       courseType, collegeID, score
       )
