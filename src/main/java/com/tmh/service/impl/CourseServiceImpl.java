@@ -6,7 +6,7 @@ import com.tmh.dao.CourseMapperCustom;
 import com.tmh.dao.SelectedcourseMapper;
 import com.tmh.model.*;
 import com.tmh.service.CourseService;
-import org.apache.commons.beanutils.BeanUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
